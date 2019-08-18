@@ -12,9 +12,12 @@
 */
 
 Route::get('/', function () {
-    return view('pages/feed');
+    return view('welcome');
 });
 
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+//Gets the messages end sends the messages
+Route::get('messages', 'FeedController@fetchFeedMsgs');
+Route::post('messages', 'FeedController@sendFeedMsgs');
