@@ -21,3 +21,6 @@ Route::get('/home', 'HomeController@index')->name('home');
 //Gets the messages end sends the messages
 Route::get('messages', 'FeedController@fetchFeedMsgs');
 Route::post('messages', 'FeedController@sendFeedMsgs');
+//All chat related things
+Route::get('chats/create/{id}', 'ChatController@store');
+Route::get('chat/{id}', 'ChatController@show')->name('chat');

@@ -1761,9 +1761,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ['user'],
   data: function data() {
@@ -1793,58 +1790,6 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 //
 //
 //
@@ -43015,6 +42960,7 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "input-group" }, [
+    _c("div", { staticClass: "input-group-prepend" }),
     _c("input", {
       directives: [
         {
@@ -43024,9 +42970,8 @@ var render = function() {
           expression: "newMessage"
         }
       ],
-      staticClass: "form-control input-sm",
+      staticClass: "form-control",
       attrs: {
-        id: "btn-input",
         type: "text",
         name: "message",
         placeholder: "Type your message here..."
@@ -43051,15 +42996,15 @@ var render = function() {
       }
     }),
     _vm._v(" "),
-    _c("span", { staticClass: "input-group-btn" }, [
+    _c("div", { staticClass: "input-group-append" }, [
       _c(
         "button",
         {
-          staticClass: "btn btn-primary btn-sm",
-          attrs: { id: "btn-chat", "data-dismiss": "modal" },
+          staticClass: "btn btn-primary",
+          attrs: { type: "button", id: "btn-chat", "data-dismiss": "modal" },
           on: { click: _vm.sendMessage }
         },
-        [_vm._v("\n            Send\n        ")]
+        [_vm._v("Go!")]
       )
     ])
   ])
@@ -55322,7 +55267,8 @@ Vue.component('feed-form', __webpack_require__(/*! ./components/FeedForm.vue */ 
 var app = new Vue({
   el: '#app',
   data: {
-    messages: []
+    messages: [],
+    showModal: false
   },
   created: function created() {
     var _this = this;
@@ -55345,6 +55291,7 @@ var app = new Vue({
     },
     addMessage: function addMessage(message) {
       this.messages.push(message);
+      this.showModal = false;
       axios.post('/messages', message).then(function (response) {
         console.log(response.data);
       });

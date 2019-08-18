@@ -37,7 +37,8 @@ const app = new Vue({
     el: '#app',
 
     data: {
-        messages: []
+        messages: [],
+        showModal: false
     },
 
     created() {
@@ -63,7 +64,7 @@ const app = new Vue({
 
         addMessage(message) {
             this.messages.push(message);
-
+            this.showModal = false;
             axios.post('/messages', message).then(response => {
                 console.log(response.data);
             });

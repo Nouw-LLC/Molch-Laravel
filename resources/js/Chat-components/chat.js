@@ -4,7 +4,7 @@ const tokenProvider = new Chatkit.TokenProvider({
 
 const chatManager = new Chatkit.ChatManager({
     instanceLocator: "v1:us1:fc00521c-4a8e-4d62-a65d-fc0398ca1dac",
-    userId: id,
+    userId: window.id,
     tokenProvider: tokenProvider
 });
 
@@ -20,9 +20,10 @@ chatManager
                     const p = document.createElement("p");
                     p.appendChild(
                         document.createTextNode(`${message.sender.name}: ${
-                            
                             message.parts[0].payload.content
-                            }`)
+                            }`,
+                        console.log(message.sender.avatarURL)
+                        )
                     );
                     ul.appendChild(p);
 
@@ -38,13 +39,23 @@ chatManager
                     // document.getElementById("card-header").innerHTML = `User ${user.name} stopped typing`
                 },
                 onPresenceChanged: (state, user) => {
-                    console.log(`User ${user.name} is ${state.current}`)
+                    console.log(`User ${user.name} is ${state.current}`);
+                    document.getElementById('username').innerHTML = otherUser;
+                    console.log(state.current);
+                    if (state.current = "offline") {
+                        document.getElementById('presence').style.color = 'red';
+                    } 
+                    if (state.current = "online") {
+                        document.getElementById('presence').style.color = 'green';
+                    }
+
                 }
             }
         });
         currentUser.isTypingIn({ roomId: room_id })
             .then(() => {
                 console.log('Jah!');
+
             })
             .catch(err => {
                 console.log(`Error sending typing indicator: ${err}`)

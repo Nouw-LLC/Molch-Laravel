@@ -1,13 +1,10 @@
 <template>
-    <div class="input-group">
-        <input id="btn-input" type="text" name="message" class="form-control input-sm" placeholder="Type your message here..." v-model="newMessage" @keyup.enter="sendMessage">
 
-        <span class="input-group-btn">
-            <button class="btn btn-primary btn-sm" id="btn-chat" data-dismiss="modal" @click="sendMessage">
-                Send
-            </button>
-        </span>
+    <div class="input-group">
+        <div class="input-group-prepend"></div><input class="form-control" type="text" name="message" placeholder="Type your message here..." v-model="newMessage" @keyup.enter="sendMessage" />
+        <div class="input-group-append"><button class="btn btn-primary" type="button" id="btn-chat" data-dismiss="modal" @click="sendMessage">Go!</button></div>
     </div>
+
 </template>
 
 <script>
