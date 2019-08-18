@@ -88,6 +88,8 @@
       <path value="$PROJECT_DIR$/vendor/shalvah/pusher-chatkit-laravel" />
       <path value="$PROJECT_DIR$/vendor/pusher/pusher-chatkit-server" />
       <path value="$PROJECT_DIR$/vendor/laracasts/utilities" />
+      <path value="$PROJECT_DIR$/vendor/pusher/pusher-php-server" />
+      <path value="$PROJECT_DIR$/vendor/paragonie/sodium_compat" />
     </include_path>
   </component>
   <component name="PhpProjectSharedConfiguration" php_language_level="7.1" />
