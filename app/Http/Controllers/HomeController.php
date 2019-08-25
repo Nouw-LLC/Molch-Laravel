@@ -42,7 +42,6 @@ class HomeController extends Controller
 
 
 //        Javascript::put([ 'user.name' => $user->name, 'user.id' => $user->id ]);
-
         JavaScript::put([
             'name' => $user->name,
             'id' => (string)$user->id
