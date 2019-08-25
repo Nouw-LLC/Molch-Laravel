@@ -18,7 +18,7 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
-//Gets the messages end sends the messages
+//Gets the messages and sends the messages
 Route::get('messages', 'FeedController@fetchFeedMsgs');
 Route::post('messages', 'FeedController@sendFeedMsgs');
 //All chat related things

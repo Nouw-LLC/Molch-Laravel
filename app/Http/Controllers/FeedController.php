@@ -31,7 +31,7 @@ class FeedController extends Controller
     {
         $user = Auth::user();
 
-        $user_id = Auth::user()->id;
+        $user_id = $user->id;
         $user_data = User::find($user_id);
 
         $post_count = $user_data->posts_count;
@@ -48,7 +48,7 @@ class FeedController extends Controller
 
         $data = $request->all();
 
-//        $message = $request->input('message');
+        //$message = $request->input('message');
 
         $message = $user->messages()->create([
             'message' => $request->input('message'),
