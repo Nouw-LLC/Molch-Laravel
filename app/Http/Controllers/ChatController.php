@@ -42,32 +42,61 @@ class ChatController extends Controller
     {
         $user = Auth::user();
         $participant = User::findOrFail($id);
+        $chatkitUser = DB::table('chatkitusers')->where('chatkitId', '=', $user->id)->count();
+        $chatkitParticipant = DB::table('chatkitusers')->where('chatkitId', '=', $participant->id)->count();
+        if ($chatkitUser === 0) {
+            Chatkit::createUser([
+                'id' => (string)$user->id,
+                'name' => $user->name,
+            ]);
 
-//        $chat_data = new Chat;
-//
-//        $chat_data->chat_creator = $user->id;
-//        $chat_data->participants = [$user->id, (int)$id];
-//
-//        $chat_data->save;
+            DB::table('chatkitusers')->insert([
+                'chatkitId' => $user->id,
+                'chatkitName' => $user->name
+            ]);
+        }
 
-        Chat::create([
-            'chat_creator' => $user->id,
-            'participants' => [$user->id, (int)$id]
-        ]);
+        if ($chatkitParticipant === 0) {
+            Chatkit::createUser([
+                'id' => (string)$participant->id,
+                'name' => $participant->name,
+            ]);
 
-        $chat_id = DB::table('chats')->orderBy('id', 'desc')->first();
+            DB::table('chatkitusers')->insert([
+                'chatkitId' => $participant->id,
+                'chatkitName' => $participant->name
+            ]);
+        }
 
-        Chatkit::createRoom([
-            'id' => (string)$chat_id->id,
-           'creator_id' => (string)$user->id,
-            'name' => "'$user->name' and '$participant->name'",
-            'user_ids' => [$id],
-            'private' => true,
-        ]);
+        $chats = Chat::select('participants')->get();
 
-//        dd($chat_id);
 
-        return redirect()->route('chat', $chat_id->id);
+        foreach($chats as $chat) {
+            $participants = $chat->participants;
+
+            if (!in_array($user->id, $participants) && in_array($participant->id, $participants)) {
+                Chat::create([
+                    'chat_creator' => $user->id,
+                    'participants' => [$user->id, (int)$id]
+                ]);
+
+                $chat_id = DB::table('chats')->select('id')->orderBy('id', 'desc')->first();
+
+                Chatkit::createRoom([
+                    'id' => (string)$chat_id->id,
+                    'creator_id' => (string)$user->id,
+                    'name' => "'$user->name' and '$participant->name'",
+                    'user_ids' => [$id],
+                    'private' => true,
+                ]);
+                return redirect()->route('chat', $chat_id->id);
+            } else {
+                return back()->with('denied', 'A room already exists with the current selected user!');
+            }
+        }
+
+
+
 
     }
 
@@ -103,7 +132,7 @@ class ChatController extends Controller
             $chats = (object)Chatkit::getUserRooms(['id' => (string)$user->id]);
             return view('chat.chat', compact('chats'));
         } else {
-            abort(403, "You don't have acces to this room!");
+            abort(403, "You don't have access to this room!");
         }
 
     }

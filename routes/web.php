@@ -24,3 +24,8 @@ Route::post('messages', 'FeedController@sendFeedMsgs');
 //All chat related things
 Route::get('chats/create/{id}', 'ChatController@store');
 Route::get('chat/{id}', 'ChatController@show')->name('chat');
+//All user management things
+Route::get('profile/{id}', 'UserController@index')->name('profile');
+//All chat related things
+Route::get('chat/create/{id}', 'ChatController@store');
+Route::get('chat/{id}', 'ChatController@show')->name('chat');

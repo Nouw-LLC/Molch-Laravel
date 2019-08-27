@@ -4,7 +4,7 @@
 
 <template>
     <ul class="chat">
-        <li class="left clearfix" v-for="message in reverseMessages">
+        <li class="clearfix" v-for="message in reverseMessages">
             <div class="card">
                 <div class="card-body">
 
@@ -13,7 +13,7 @@
                             <img class="feed-avatar" v-bind:src="'avatars/' + message.user.avatar">
                         </div>
                         <div class="feed-message">
-                            <a class="feed-user" v-bind:href="'user/' + message.user.id"><strong>{{message.user.name}}</strong></a><p> {{message.message}} </p>
+                            <a class="feed-user" v-bind:href="'profile/' + message.user.id"><strong>{{message.user.name}}</strong></a><p> {{message.message}} </p>
                         </div>
                         <div class="feed-buttons">
                             <button class="btn report-button">

@@ -43035,7 +43035,7 @@ var render = function() {
     "ul",
     { staticClass: "chat" },
     _vm._l(_vm.reverseMessages, function(message) {
-      return _c("li", { staticClass: "left clearfix" }, [
+      return _c("li", { staticClass: "clearfix" }, [
         _c("div", { staticClass: "card" }, [
           _c("div", { staticClass: "card-body" }, [
             _c("div", { staticClass: "feed-wrapper" }, [
@@ -43051,7 +43051,7 @@ var render = function() {
                   "a",
                   {
                     staticClass: "feed-user",
-                    attrs: { href: "user/" + message.user.id }
+                    attrs: { href: "profile/" + message.user.id }
                   },
                   [_c("strong", [_vm._v(_vm._s(message.user.name))])]
                 ),

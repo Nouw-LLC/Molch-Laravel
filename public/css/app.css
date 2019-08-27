@@ -1,5 +1,13 @@
 @import url(https://fonts.googleapis.com/css?family=Nunito);@charset "UTF-8";
 
+.left {
+  float: left;
+}
+
+.right {
+  float: right;
+}
+
 /*!
  * Bootstrap v4.3.1 (https://getbootstrap.com/)
  * Copyright 2011-2019 The Bootstrap Authors
@@ -10642,6 +10650,14 @@ a.text-dark:focus {
     color: inherit;
     border-color: #dee2e6;
   }
+}
+
+.left {
+  float: left;
+}
+
+.right {
+  float: right;
 }
 
 .feed-card {

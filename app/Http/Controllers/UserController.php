@@ -1,13 +1,15 @@
 <?php
 
+
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+
+use App\User;
 use Chatkit\Laravel\Facades\Chatkit;
 use JavaScript;
 use Illuminate\Support\Facades\Auth;
 
-class HomeController extends Controller
+class UserController extends Controller
 {
     /**
      * Create a new controller instance.
@@ -20,12 +22,19 @@ class HomeController extends Controller
     }
 
     /**
-     * Show the application dashboard.
-     *
-     * @return \Illuminate\Contracts\Support\Renderable
+     * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index($id)
     {
+        $profileUser = User::findOrFail($id);
+
+
+        if ($profileUser->avatar === null) {
+            $hr = "border-top: 1px solid rgba(0,0,0,.1)";
+        } else {
+            $hr = "border-top: 1px solid rgba(255,255,255,0.5)";
+        }
+
         $user = Auth::user();
 
         $chats = (object)Chatkit::getUserRooms(['id' => (string)$user->id]);
@@ -35,7 +44,6 @@ class HomeController extends Controller
             'id' => (string)$user->id
         ]);
 
-
-        return view('feed', compact('chats'));
+        return view('user.profile', ['profileUser' => $profileUser, 'hr' => $hr], compact('chats'));
     }
 }

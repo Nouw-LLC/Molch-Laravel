@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
+
     <div class="container-fluid">
         <div class="card" style="height: 75vh;">
             <div class="card-header"><span id="username" style="font-size: 20px;">Username&nbsp;</span> <span id="presence">●</span>
