@@ -20,10 +20,10 @@ class CreateUsersTable extends Migration
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password')->nullable();
             $table->string('avatar_path')->nullable();
-            $table->char('status')->nullable();
+            $table->string('status', 50)->nullable()->default("New Member");
+            $table->string('bio', 2000);
             $table->integer('posts_count')->default(0);
             $table->integer('likes_count')->default(0);
-            $table->text('tags')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });

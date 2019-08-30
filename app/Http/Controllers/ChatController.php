@@ -129,6 +129,7 @@ class ChatController extends Controller
                 'room_id' => $id_string,
                 'otherUser' => $otherUser->name
             ]);
+
             $chats = (object)Chatkit::getUserRooms(['id' => (string)$user->id]);
             return view('chat.chat', compact('chats'));
         } else {

@@ -9,3 +9,23 @@
 
 //Feed styling
 @import 'feed';
+
+.white {
+    color: white;
+}
+
+.left {
+    float: left;
+}
+
+.right {
+    float: right;
+}
+
+.settings-nav {
+    border-bottom: 1px solid #e7e7e7;
+}
+
+.active {
+    border-right: 3px solid #4e73df;
+}

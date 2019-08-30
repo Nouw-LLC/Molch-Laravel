@@ -29,3 +29,5 @@ Route::get('profile/{id}', 'UserController@index')->name('profile');
 //All chat related things
 Route::get('chat/create/{id}', 'ChatController@store');
 Route::get('chat/{id}', 'ChatController@show')->name('chat');
+//Settings
+Route::get('settings/avatar', 'SettingsController@avatar');

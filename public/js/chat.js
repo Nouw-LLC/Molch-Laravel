@@ -98,7 +98,7 @@ var tokenProvider = new Chatkit.TokenProvider({
 });
 var chatManager = new Chatkit.ChatManager({
   instanceLocator: "v1:us1:fc00521c-4a8e-4d62-a65d-fc0398ca1dac",
-  userId: window.id,
+  userId: id,
   tokenProvider: tokenProvider
 });
 chatManager.connect().then(function (currentUser) {

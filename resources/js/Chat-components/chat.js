@@ -4,7 +4,7 @@ const tokenProvider = new Chatkit.TokenProvider({
 
 const chatManager = new Chatkit.ChatManager({
     instanceLocator: "v1:us1:fc00521c-4a8e-4d62-a65d-fc0398ca1dac",
-    userId: window.id,
+    userId: id,
     tokenProvider: tokenProvider
 });
 
@@ -44,7 +44,7 @@ chatManager
                     console.log(state.current);
                     if (state.current = "offline") {
                         document.getElementById('presence').style.color = 'red';
-                    } 
+                    }
                     if (state.current = "online") {
                         document.getElementById('presence').style.color = 'green';
                     }
