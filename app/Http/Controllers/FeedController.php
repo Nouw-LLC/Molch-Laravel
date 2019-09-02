@@ -36,6 +36,10 @@ class FeedController extends Controller
 
         $post_count = $user_data->posts_count;
 
+        $request->validate([
+            'message' => 'min:10'
+        ]);
+
         if((int)$post_count == 100) {
             Award::where('user', '=', $user->id)->update(['posts_100' => true]);
         }

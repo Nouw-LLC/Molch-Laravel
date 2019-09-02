@@ -6,6 +6,11 @@
 
 require('./bootstrap');
 
+import bsCustomFileInput from 'bs-custom-file-input';
+import Vue from 'vue'
+import Vuelidate from 'vuelidate'
+Vue.use(Vuelidate);
+
 window.Vue = require('vue');
 
 /**
@@ -72,3 +77,6 @@ const app = new Vue({
     },
 });
 
+$(document).ready(function () {
+    bsCustomFileInput.init()
+})

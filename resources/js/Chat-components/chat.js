@@ -22,7 +22,7 @@ chatManager
                         document.createTextNode(`${message.sender.name}: ${
                             message.parts[0].payload.content
                             }`,
-                        console.log(message.sender.avatarURL)
+                        console.log(message.sender)
                         )
                     );
                     ul.appendChild(p);
@@ -42,10 +42,9 @@ chatManager
                     console.log(`User ${user.name} is ${state.current}`);
                     document.getElementById('username').innerHTML = otherUser;
                     console.log(state.current);
-                    if (state.current = "offline") {
+                    if (state.current == "offline") {
                         document.getElementById('presence').style.color = 'red';
-                    }
-                    if (state.current = "online") {
+                    } else {
                         document.getElementById('presence').style.color = 'green';
                     }
 

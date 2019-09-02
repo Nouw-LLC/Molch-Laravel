@@ -6,15 +6,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <title>Blank Page - Molch</title>
-    <link rel="stylesheet" href="{{asset("assets/bootstrap/css/bootstrap.min.css")}}">
+    <title>Molch</title>
+    <link rel="stylesheet" href="{{asset("bootstrap/css/bootstrap.min.css")}}">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i">
-    <link rel="stylesheet" href="{{asset("assets/fonts/fontawesome-all.min.css")}}">
-    <link rel="stylesheet" href="{{asset("assets/fonts/font-awesome.min.css")}}">
-    <link rel="stylesheet" href="{{asset("assets/fonts/fontawesome5-overrides.min.css")}}">
-    <link rel="stylesheet" href="{{asset("assets/css/laravel-bss.css")}}">
-    <link rel="stylesheet" href="{{asset("assets/css/untitled.css")}}">
-    <link rel="stylesheet" href="{{asset("assets/css/untitled.compiled.css")}}">
+    <script src="https://kit.fontawesome.com/2698fbf7e9.js"></script>
+    <link rel="stylesheet" href="{{asset("css/laravel-bss.css")}}">
+    <link rel="stylesheet" href="{{asset("css/untitled.css")}}">
+    <link rel="stylesheet" href="{{asset("css/untitled.compiled.css")}}">
     <script src="{{ asset('js/chat.js')}}" defer></script>
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <script src="{{ asset('js/app.js') }}" defer></script>
@@ -93,8 +91,8 @@
                         </li>
                         <div class="d-none d-sm-block topbar-divider"></div>
                         <li class="nav-item dropdown no-arrow" role="presentation">
-                        <li class="nav-item dropdown no-arrow"><a class="dropdown-toggle nav-link" data-toggle="dropdown" aria-expanded="false" href="#"><span class="d-none d-lg-inline mr-2 text-gray-600 small">{{Auth::user()->name}}</span><img class="border rounded-circle img-profile" src="assets/img/avatars/avatar1.jpeg"></a>
-                            <div class="dropdown-menu shadow dropdown-menu-right animated--grow-in" role="menu"><a class="dropdown-item" role="presentation" href="{{ url('profile/'.Auth::user()->id) }}"><i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>&nbsp;Profile</a><a class="dropdown-item" role="presentation" href="#"><i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>&nbsp;Settings</a>
+                        <li class="nav-item dropdown no-arrow"><a class="dropdown-toggle nav-link" data-toggle="dropdown" aria-expanded="false" href="#"><span class="d-none d-lg-inline mr-2 text-gray-600 small">{{Auth::user()->name}}</span><img class="border rounded-circle img-profile" src="{{url('storage/avatars/'.$user->avatar_name)}}"></a>
+                            <div class="dropdown-menu shadow dropdown-menu-right animated--grow-in" role="menu"><a class="dropdown-item" role="presentation" href="{{ url('profile/'.Auth::user()->id) }}"><i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>&nbsp;Profile</a><a class="dropdown-item" role="presentation" href="{{url('settings/home')}}"><i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>&nbsp;Settings</a>
                                 <a class="dropdown-item" role="presentation" href="{{ route('logout') }}"
                                    onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();"><i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>{{ __('Logout') }}</a></div>
@@ -117,11 +115,11 @@
                 <div class="text-center my-auto copyright"><span>Copyright © Molch 2019</span></div>
             </div>
         </footer>
-<script src="{{asset("assets/js/jquery.min.js")}}"></script>
-<script src="{{asset("assets/bootstrap/js/bootstrap.min.js")}}"></script>
+<script src="{{asset("js/jquery.min.js")}}"></script>
+<script src="{{asset("bootstrap/js/bootstrap.min.js")}}"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.js"></script>
-<script src="{{asset("assets/js/modal.js")}}"></script>
-<script src="{{asset("assets/js/theme.js")}}"></script>
+<script src="{{asset("js/modal.js")}}"></script>
+<script src="{{asset("js/theme.js")}}"></script>
 
 </body>
 

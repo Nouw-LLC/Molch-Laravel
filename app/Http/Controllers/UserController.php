@@ -44,6 +44,6 @@ class UserController extends Controller
             'id' => (string)$user->id
         ]);
 
-        return view('user.profile', ['profileUser' => $profileUser, 'hr' => $hr], compact('chats'));
+        return view('user.profile', ['profileUser' => $profileUser, 'hr' => $hr], compact('chats', 'user'));
     }
 }

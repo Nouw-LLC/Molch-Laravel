@@ -36,6 +36,6 @@ class HomeController extends Controller
         ]);
 
 
-        return view('feed', compact('chats'));
+        return view('feed', compact('chats', 'user'));
     }
 }

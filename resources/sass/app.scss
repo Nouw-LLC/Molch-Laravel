@@ -29,3 +29,25 @@
 .active {
     border-right: 3px solid #4e73df;
 }
+
+a {
+    color: #212529;
+}
+
+a:hover {
+    color: #212529;
+    text-decoration: none;
+}
+
+.hover:hover {
+    background-color: #f8f9fa;
+}
+
+.avatar {
+    width: 140px;
+    height: 140px;
+}
+
+.profile-container {
+    color: gray;
+}

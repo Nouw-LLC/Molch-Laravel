@@ -27,7 +27,7 @@
                     </div>
                 </transition>
             </div>
-            <div class="card-header"><span style="font-size: 20px;">The Feed</span><button class="btn btn-primary btn-sm border rounded float-right" id="show-modal" type="button" @click="showModal = true"><i class="fa fa-plus"></i></button></div>
+            <div class="card-header"><span style="font-size: 20px;">The Feed</span><button class="btn btn-primary  border rounded float-right" id="show-modal" type="button" @click="showModal = true"><i class="fa fa-plus"></i></button></div>
             <div class="card-body card-body-overflow">
                 <feed-messages :messages="messages"></feed-messages>
             </div>

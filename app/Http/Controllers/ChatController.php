@@ -44,6 +44,7 @@ class ChatController extends Controller
         $participant = User::findOrFail($id);
         $chatkitUser = DB::table('chatkitusers')->where('chatkitId', '=', $user->id)->count();
         $chatkitParticipant = DB::table('chatkitusers')->where('chatkitId', '=', $participant->id)->count();
+
         if ($chatkitUser === 0) {
             Chatkit::createUser([
                 'id' => (string)$user->id,
@@ -68,20 +69,18 @@ class ChatController extends Controller
             ]);
         }
 
-        $chats = Chat::select('participants')->get();
+        $rooms = Chatkit::getUserRooms([ 'id' => (string)$user->id]);
 
+        foreach($rooms["body"] as $room) {
+            if (in_array((string)$user->id, $room["member_user_ids"]) && in_array((string)$participant->id, $room["member_user_ids"])) {
+                return back()->with('denied', 'A room already exists with the current selected user!');
 
-        foreach($chats as $chat) {
-            $participants = $chat->participants;
-
-            if (!in_array($user->id, $participants) && in_array($participant->id, $participants)) {
+            } else {
                 Chat::create([
                     'chat_creator' => $user->id,
                     'participants' => [$user->id, (int)$id]
                 ]);
-
                 $chat_id = DB::table('chats')->select('id')->orderBy('id', 'desc')->first();
-
                 Chatkit::createRoom([
                     'id' => (string)$chat_id->id,
                     'creator_id' => (string)$user->id,
@@ -90,14 +89,8 @@ class ChatController extends Controller
                     'private' => true,
                 ]);
                 return redirect()->route('chat', $chat_id->id);
-            } else {
-                return back()->with('denied', 'A room already exists with the current selected user!');
             }
         }
-
-
-
-
     }
 
     /**
@@ -131,7 +124,7 @@ class ChatController extends Controller
             ]);
 
             $chats = (object)Chatkit::getUserRooms(['id' => (string)$user->id]);
-            return view('chat.chat', compact('chats'));
+            return view('chat.chat', compact('chats', 'user'));
         } else {
             abort(403, "You don't have access to this room!");
         }

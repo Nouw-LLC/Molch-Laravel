@@ -30,4 +30,11 @@ Route::get('profile/{id}', 'UserController@index')->name('profile');
 Route::get('chat/create/{id}', 'ChatController@store');
 Route::get('chat/{id}', 'ChatController@show')->name('chat');
 //Settings
+Route::get('settings/home', 'SettingsController@index');
 Route::get('settings/avatar', 'SettingsController@avatar');
+Route::post('settings/avatar/', 'SettingsController@avatar');
+Route::get('settings/username', 'SettingsController@index');
+Route::get('settings/email', 'SettingsController@index');
+Route::get('settings/password', 'SettingsController@index');
+Route::get('settings/status', 'SettingsController@index');
+Route::get('settings/bio', 'SettingsController@index');

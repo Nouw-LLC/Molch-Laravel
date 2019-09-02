@@ -10,7 +10,7 @@
 
                     <div class="feed-wrapper">
                         <div class="feed-avatar-wrapper">
-                            <img class="feed-avatar" v-bind:src="'avatars/' + message.user.avatar">
+                            <img class="feed-avatar" v-bind:src="'storage/avatars/' + message.user.avatar_name">
                         </div>
                         <div class="feed-message">
                             <a class="feed-user" v-bind:href="'profile/' + message.user.id"><strong>{{message.user.name}}</strong></a><p> {{message.message}} </p>
