@@ -40,7 +40,9 @@
                         <div class="card-header">
                             <h4>Bio</h4>
                         </div>
-                        <div class="card-body"></div>
+                        <div class="card-body">
+                            {{ $profileUser->bio }}
+                        </div>
                     </div>
                     <div class="card shadow-lg">
                         <div class="card-header">

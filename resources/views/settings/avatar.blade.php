@@ -24,4 +24,4 @@
         </div>
         <button type="submit" class="btn btn-primary justify-content-center">Submit</button>
     </form>
-    @endsection
+@endsection

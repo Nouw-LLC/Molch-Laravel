@@ -34,8 +34,11 @@ Vue.component('example-component', require('./components/ExampleComponent.vue').
 
 Vue.component('feed-messages', require('./components/FeedMessage.vue').default);
 Vue.component('feed-form', require('./components/FeedForm.vue').default);
-
-
+Vue.component('username-form', require('./components/settings/UsernameComponent.vue').default);
+Vue.component('email-form', require('./components/settings/EmailComponent.vue').default);
+Vue.component('password-form', require('./components/settings/PasswordComponent.vue').default);
+Vue.component('status-form', require('./components/settings/StatusComponent.vue').default);
+Vue.component('bio-form', require('./components/settings/BioComponent.vue').default);
 
 const app = new Vue({
 

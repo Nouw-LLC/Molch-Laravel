@@ -22,7 +22,7 @@ chatManager
                         document.createTextNode(`${message.sender.name}: ${
                             message.parts[0].payload.content
                             }`,
-                        console.log(message.sender)
+                        console.log(message.sender.avatarURL)
                         )
                     );
                     ul.appendChild(p);

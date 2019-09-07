@@ -109,7 +109,7 @@ chatManager.connect().then(function (currentUser) {
         console.log("Received message:", message);
         var ul = document.getElementById("message-list");
         var p = document.createElement("p");
-        p.appendChild(document.createTextNode("".concat(message.sender.name, ": ").concat(message.parts[0].payload.content), console.log(message.sender)));
+        p.appendChild(document.createTextNode("".concat(message.sender.name, ": ").concat(message.parts[0].payload.content), console.log(message.sender.avatarURL)));
         ul.appendChild(p);
       },
       onUserStartedTyping: function onUserStartedTyping(user) {
