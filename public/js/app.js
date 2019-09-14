@@ -1820,11 +1820,71 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ['messages'],
+  data: function data() {
+    return {
+      fields: {},
+      modal: false,
+      id: 0,
+      errors: {},
+      success: false,
+      error: ""
+    };
+  },
   computed: {
     reverseMessages: function reverseMessages() {
       return this.messages.slice().reverse();
+    }
+  },
+  methods: {
+    submit: function submit() {
+      var _this = this;
+
+      this.errors = {};
+      console.log(this.fields);
+      axios.post('/post/report', this.fields).then(function (response) {
+        _this.success = true;
+      })["catch"](function (error) {
+        if (error.response.status === 422 || error.response.status === 500) {
+          if (error.response.status === 422) {
+            console.log(error.response.data);
+            _this.errors = error.response.data.errors || {};
+          } else {
+            _this.error = error.response.data;
+          }
+        }
+      });
     }
   }
 });
@@ -43602,11 +43662,15 @@ var render = function() {
         _c("div", { staticClass: "card" }, [
           _c("div", { staticClass: "card-body" }, [
             _c("div", { staticClass: "feed-wrapper" }, [
-              _c("div", { staticClass: "feed-avatar-wrapper" }, [
-                _c("img", {
-                  staticClass: "feed-avatar",
-                  attrs: { src: "storage/avatars/" + message.user.avatar_name }
-                })
+              _c("a", { attrs: { href: "profile/" + message.user.id } }, [
+                _c("div", { staticClass: "feed-avatar-wrapper" }, [
+                  _c("img", {
+                    staticClass: "feed-avatar",
+                    attrs: {
+                      src: "storage/avatars/" + message.user.avatar_name
+                    }
+                  })
+                ])
               ]),
               _vm._v(" "),
               _c("div", { staticClass: "feed-message" }, [
@@ -43622,7 +43686,23 @@ var render = function() {
               ]),
               _vm._v(" "),
               _c("div", { staticClass: "feed-buttons" }, [
-                _vm._m(0, true),
+                _c(
+                  "button",
+                  {
+                    staticClass: "btn report-button",
+                    attrs: {
+                      id: message.user.id,
+                      "data-toggle": "modal",
+                      "data-target": "#reportModal"
+                    },
+                    on: {
+                      click: function($event) {
+                        ;(_vm.modal = true), (_vm.id = message.user.id)
+                      }
+                    }
+                  },
+                  [_c("i", { staticClass: "far fa-flag" })]
+                ),
                 _vm._v(" "),
                 _c("button", { staticClass: "btn like-button" }, [
                   _c("i", { staticClass: "far fa-heart" }),
@@ -43633,7 +43713,163 @@ var render = function() {
                   )
                 ])
               ])
-            ])
+            ]),
+            _vm._v(" "),
+            _c(
+              "div",
+              {
+                staticClass: "modal fade",
+                attrs: {
+                  id: "reportModal",
+                  tabindex: "-1",
+                  role: "dialog",
+                  "aria-labelledby": "reportModalLabel",
+                  "aria-hidden": "true"
+                }
+              },
+              [
+                _c(
+                  "div",
+                  { staticClass: "modal-dialog", attrs: { role: "document" } },
+                  [
+                    _c("div", { staticClass: "modal-content" }, [
+                      _vm._m(0, true),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "modal-body" }, [
+                        _vm.success
+                          ? _c("div", { staticClass: "alert alert-success" }, [
+                              _vm._v(
+                                "\n                                    Your report has been send to the staff team!\n                                "
+                              )
+                            ])
+                          : _vm._e(),
+                        _vm._v(" "),
+                        _vm.error
+                          ? _c("div", { staticClass: "alert alert-danger" }, [
+                              _vm._v(
+                                "\n                                    " +
+                                  _vm._s(_vm.error) +
+                                  "\n                                "
+                              )
+                            ])
+                          : _vm._e(),
+                        _vm._v(" "),
+                        _c(
+                          "form",
+                          {
+                            attrs: { method: "post" },
+                            on: {
+                              submit: function($event) {
+                                $event.preventDefault()
+                                return _vm.submit($event)
+                              }
+                            }
+                          },
+                          [
+                            _c("div", { staticClass: "form-group" }, [
+                              _c("label", { attrs: { for: "reason" } }, [
+                                _vm._v("Reason:")
+                              ]),
+                              _vm._v(" "),
+                              _c("input", {
+                                directives: [
+                                  {
+                                    name: "model",
+                                    rawName: "v-model",
+                                    value: (_vm.fields.message =
+                                      message.message),
+                                    expression:
+                                      "fields.message = message.message"
+                                  }
+                                ],
+                                attrs: { id: "message", type: "hidden" },
+                                domProps: {
+                                  value: (_vm.fields.message = message.message)
+                                },
+                                on: {
+                                  input: function($event) {
+                                    if ($event.target.composing) {
+                                      return
+                                    }
+                                    _vm.$set(
+                                      (_vm.fields.message = message),
+                                      "message",
+                                      $event.target.value
+                                    )
+                                  }
+                                }
+                              }),
+                              _vm._v(" "),
+                              _c("input", {
+                                directives: [
+                                  {
+                                    name: "model",
+                                    rawName: "v-model",
+                                    value: (_vm.fields.user = message.user_id),
+                                    expression: "fields.user = message.user_id"
+                                  }
+                                ],
+                                attrs: { id: "user", type: "hidden" },
+                                domProps: {
+                                  value: (_vm.fields.user = message.user_id)
+                                },
+                                on: {
+                                  input: function($event) {
+                                    if ($event.target.composing) {
+                                      return
+                                    }
+                                    _vm.$set(
+                                      (_vm.fields.user = message),
+                                      "user_id",
+                                      $event.target.value
+                                    )
+                                  }
+                                }
+                              }),
+                              _vm._v(" "),
+                              _c("textarea", {
+                                directives: [
+                                  {
+                                    name: "model",
+                                    rawName: "v-model",
+                                    value: _vm.fields.reason,
+                                    expression: "fields.reason"
+                                  }
+                                ],
+                                staticClass: "form-control",
+                                attrs: {
+                                  id: "reason",
+                                  type: "text",
+                                  placeholder: "Reason for reporting",
+                                  minlength: "20"
+                                },
+                                domProps: { value: _vm.fields.reason },
+                                on: {
+                                  input: function($event) {
+                                    if ($event.target.composing) {
+                                      return
+                                    }
+                                    _vm.$set(
+                                      _vm.fields,
+                                      "reason",
+                                      $event.target.value
+                                    )
+                                  }
+                                }
+                              })
+                            ]),
+                            _vm._v(" "),
+                            _c("hr"),
+                            _vm._v(" "),
+                            _vm._m(1, true)
+                          ]
+                        )
+                      ])
+                    ])
+                  ]
+                )
+              ]
+            )
           ])
         ])
       ])
@@ -43646,8 +43882,39 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("button", { staticClass: "btn report-button" }, [
-      _c("i", { staticClass: "far fa-flag" })
+    return _c("div", { staticClass: "modal-header" }, [
+      _c(
+        "h5",
+        { staticClass: "modal-title", attrs: { id: "reportModalLabel" } },
+        [_vm._v("Report post")]
+      ),
+      _vm._v(" "),
+      _c(
+        "button",
+        {
+          staticClass: "close",
+          attrs: {
+            type: "button",
+            "data-dismiss": "modal",
+            "aria-label": "Close"
+          }
+        },
+        [_c("span", { attrs: { "aria-hidden": "true" } }, [_vm._v("×")])]
+      )
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "row text-center" }, [
+      _c("div", { staticClass: "col" }, [
+        _c(
+          "button",
+          { staticClass: "btn btn-primary", attrs: { type: "submit" } },
+          [_vm._v("Submit")]
+        )
+      ])
     ])
   }
 ]

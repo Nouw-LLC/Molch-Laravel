@@ -2,25 +2,16 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f233580d-31d9-43c8-bb9b-161f67d24da9" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/resources/js/components/settings/BioComponent.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/js/components/settings/EmailComponent.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/js/components/settings/PasswordComponent.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/js/components/settings/StatusComponent.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/js/components/settings/UsernameComponent.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/settings/bio.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/settings/email.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/settings/password.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/settings/status.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/settings/username.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/AdminController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/sass/_modal.scss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/SettingsController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/SettingsController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/FeedController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/FeedController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/app.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/app.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/chat.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/chat.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/Chat-components/chat.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/Chat-components/chat.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/settings/avatar.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/settings/avatar.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/user/profile.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/user/profile.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/components/FeedMessage.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/FeedMessage.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/sass/app.scss" beforeDir="false" afterPath="$PROJECT_DIR$/resources/sass/app.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/layouts/app.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/app.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -39,6 +30,7 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Vue Single File Component" />
+        <option value="JavaScript File" />
       </list>
     </option>
   </component>
@@ -237,7 +229,10 @@
       <workItem from="1567752644939" duration="199000" />
       <workItem from="1567753123105" duration="293000" />
       <workItem from="1567761333466" duration="223000" />
-      <workItem from="1567859282842" duration="5177000" />
+      <workItem from="1567859282842" duration="12332000" />
+      <workItem from="1567959230556" duration="3801000" />
+      <workItem from="1568373715341" duration="36000" />
+      <workItem from="1568466249910" duration="3153000" />
     </task>
     <servers />
   </component>

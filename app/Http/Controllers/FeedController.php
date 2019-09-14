@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Feed;
+use App\FeedReport;
 use App\User;
 use App\Award;
 use App\Events\FeedMessageSent;
@@ -65,6 +66,27 @@ class FeedController extends Controller
 
 
         return ['status' => 'Message Sent!', 'data' => $data, 'user' => $user];
+    }
+
+    public function report(Request $request)
+    {
+        $request->validate([
+            'reason' => 'required|min:20',
+        ]);
+
+        $user = Auth::user();
+
+        $report = new FeedReport();
+
+        $report->reason = $request->reason;
+        $report->reported = $request->user;
+        $report->message = $request->message;
+        $report->reporter = $user->id;
+        $report->typeOfReport = 1;
+
+        $report->save();
+
+        return response()->json(null,200);
     }
 
 }

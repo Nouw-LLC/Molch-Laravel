@@ -29,7 +29,7 @@ Route::get('profile/{id}', 'UserController@index')->name('profile');
 //All chat related things
 Route::get('chat/create/{id}', 'ChatController@store');
 Route::get('chat/{id}', 'ChatController@show')->name('chat');
-//Settings
+//All settings related things
 Route::get('settings/home', 'SettingsController@index');
 Route::get('settings/avatar', 'SettingsController@avatar');
 Route::post('settings/avatar/', 'SettingsController@avatar');
@@ -43,3 +43,5 @@ Route::get('settings/status', 'SettingsController@status');
 Route::post('settings/status', 'SettingsController@status');
 Route::get('settings/bio', 'SettingsController@bio');
 Route::post('settings/bio', 'SettingsController@bio');
+//All admin related things
+Route::post('post/report', 'FeedController@report');
