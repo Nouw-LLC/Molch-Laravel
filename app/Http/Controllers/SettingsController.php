@@ -10,6 +10,8 @@ use Illuminate\Support\Facades\Validator;
 use JavaScript;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
+use Spatie\Permission\Models\Permission;
+use Spatie\Permission\Models\Role;
 
 class SettingsController extends Controller
 {

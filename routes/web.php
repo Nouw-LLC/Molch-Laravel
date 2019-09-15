@@ -45,3 +45,9 @@ Route::get('settings/bio', 'SettingsController@bio');
 Route::post('settings/bio', 'SettingsController@bio');
 //All admin related things
 Route::post('post/report', 'FeedController@report');
+Route::group(['middleware' => ['role:Admin|Moderator']], function () {
+    Route::get('staff/dashboard', 'StaffController@index');
+    Route::post('staff/task', 'TaskController@createTask');
+    Route::get('staff/task/fetch', 'TaskController@fetch');
+    Route::post('staff/task/delete', 'TaskController@delete');
+});

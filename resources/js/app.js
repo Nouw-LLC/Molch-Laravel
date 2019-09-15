@@ -39,6 +39,7 @@ Vue.component('email-form', require('./components/settings/EmailComponent.vue').
 Vue.component('password-form', require('./components/settings/PasswordComponent.vue').default);
 Vue.component('status-form', require('./components/settings/StatusComponent.vue').default);
 Vue.component('bio-form', require('./components/settings/BioComponent.vue').default);
+Vue.component('task-list', require('./components/staff/TaskComponent.vue').default);
 
 const app = new Vue({
 

@@ -17,7 +17,6 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <script src="{{ asset('js/app.js') }}" defer></script>
     <script src="https://unpkg.com/@pusher/chatkit-client@1/dist/web/chatkit.js"></script>
-    <script>console.log(id);</script>
 
 </head>
 
@@ -30,10 +29,7 @@
             </a>
             <hr class="sidebar-divider my-0">
             <ul class="nav navbar-nav text-light" id="accordionSidebar">
-{{--                <li class="nav-item" role="presentation"><a class="nav-link text-center" href="#"><i class="fa fa-plus"></i><span class="text-center">Make new chat</span></a></li>--}}
-                @foreach($chats->body as $instance)
-                    <li class="nav-item" role="presentation"><a class="nav-link text-center" href="{{url("chat/{$instance['id']}")}}"><i class="fa fa-comment"></i>{{$instance["name"]}}</a></li>
-                @endforeach
+                    <li class="nav-item" role="presentation"><a class="nav-link text-center" href="#"><i class="fa fa-comment"></i>Testing</a></li>
             </ul>
             <div class="text-center d-none d-md-inline"><button class="btn rounded-circle border-0" id="sidebarToggle" type="button"></button></div>
         </div>
@@ -91,12 +87,7 @@
                         <div class="d-none d-sm-block topbar-divider"></div>
                         <li class="nav-item dropdown no-arrow" role="presentation">
                         <li class="nav-item dropdown no-arrow"><a class="dropdown-toggle nav-link" data-toggle="dropdown" aria-expanded="false" href="#"><span class="d-none d-lg-inline mr-2 text-gray-600 small">{{Auth::user()->name}}</span><img class="border rounded-circle img-profile" src="{{url('storage/avatars/'.$user->avatar_name)}}"></a>
-                            <div class="dropdown-menu shadow dropdown-menu-right animated--grow-in" role="menu">
-                                <a class="dropdown-item" role="presentation" href="{{ url('profile/'.Auth::user()->id) }}"><i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>&nbsp;Profile</a>
-                                <a class="dropdown-item" role="presentation" href="{{url('settings/home')}}"><i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>&nbsp;Settings</a>
-                                @hasanyrole('Moderator|Admin')
-                                <a class="dropdown-item" role="presentation" href="{{url('staff/dashboard')}}"><i class="fas fa-lock fa-sm fa-fw mr-2 text-gray-400"></i>&nbsp;Staff Dashboard</a>
-                                @endhasanyrole
+                            <div class="dropdown-menu shadow dropdown-menu-right animated--grow-in" role="menu"><a class="dropdown-item" role="presentation" href="{{ url('profile/'.Auth::user()->id) }}"><i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>&nbsp;Profile</a><a class="dropdown-item" role="presentation" href="{{url('settings/home')}}"><i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>&nbsp;Settings</a>
                                 <a class="dropdown-item" role="presentation" href="{{ route('logout') }}"
                                    onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();"><i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>{{ __('Logout') }}</a></div>
@@ -119,11 +110,11 @@
                 <div class="text-center my-auto copyright"><span>Copyright © Molch 2019</span></div>
             </div>
         </footer>
-<script src="{{asset("js/jquery.min.js")}}"></script>
-<script src="{{asset("bootstrap/js/bootstrap.min.js")}}"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.js"></script>
-<script src="{{asset("js/modal.js")}}"></script>
-<script src="{{asset("js/theme.js")}}"></script>
+        <script src="{{asset("js/jquery.min.js")}}"></script>
+        <script src="{{asset("bootstrap/js/bootstrap.min.js")}}"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.js"></script>
+        <script src="{{asset("js/modal.js")}}"></script>
+        <script src="{{asset("js/theme.js")}}"></script>
 </body>
 
 </html>
