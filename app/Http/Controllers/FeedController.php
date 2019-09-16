@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Feed;
 use App\FeedReport;
+use App\Report;
 use App\User;
 use App\Award;
 use App\Events\FeedMessageSent;
@@ -76,7 +77,7 @@ class FeedController extends Controller
 
         $user = Auth::user();
 
-        $report = new FeedReport();
+        $report = new Report();
 
         $report->reason = $request->reason;
         $report->reported = $request->user;

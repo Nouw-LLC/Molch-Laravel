@@ -50,4 +50,6 @@ Route::group(['middleware' => ['role:Admin|Moderator']], function () {
     Route::post('staff/task', 'TaskController@createTask');
     Route::get('staff/task/fetch', 'TaskController@fetch');
     Route::post('staff/task/delete', 'TaskController@delete');
+    Route::get('staff/reports', 'ReportController@index');
+    Route::get('staff/reports/fetch', 'ReportController@fetch');
 });
