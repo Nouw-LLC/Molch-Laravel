@@ -23,7 +23,9 @@ class StaffController extends Controller
 
         $userCount = User::query()->orderBy('id', 'desc')->take(1)->get();
 
-        $reports = DB::table('feed_reports')->where('processed', 0)->count();
+//        $reports = DB::table('feed_reports')->where('processed', 0)->count();
+
+        $reports = Report::query()->where('processed', 0)->count();
 
         return view('staff.index', compact(['user', 'userCount', 'reports']));
     }

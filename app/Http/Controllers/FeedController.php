@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Feed;
-use App\FeedReport;
 use App\Report;
 use App\User;
 use App\Award;
@@ -11,6 +10,7 @@ use App\Events\FeedMessageSent;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+
 
 class FeedController extends Controller
 {

@@ -1848,8 +1848,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ['messages'],
   data: function data() {
@@ -2278,6 +2276,41 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -2285,7 +2318,9 @@ __webpack_require__.r(__webpack_exports__);
       errors: {},
       success: false,
       error: "",
-      reports: []
+      reports: [],
+      action: 0,
+      modal: false
     };
   },
   created: function created() {
@@ -2298,6 +2333,71 @@ __webpack_require__.r(__webpack_exports__);
   computed: {
     reverseTasks: function reverseTasks() {
       return this.reports.slice().reverse();
+    }
+  },
+  methods: {
+    approve: function approve() {
+      var _this2 = this;
+
+      this.errors = {};
+      console.log(this.fields);
+      axios.post('/staff/report/approve', this.fields).then(function (response) {
+        _this2.success = true;
+        axios.get('/staff/reports/fetch').then(function (response) {
+          _this2.reports = response.data;
+        });
+      })["catch"](function (error) {
+        if (error.response.status === 422 || error.response.status === 500) {
+          if (error.response.status === 422) {
+            console.log(error.response.data);
+            _this2.errors = error.response.data.errors || {};
+          } else {
+            _this2.error = error.response.data;
+          }
+        }
+      });
+    },
+    warn: function warn() {
+      var _this3 = this;
+
+      this.errors = {};
+      console.log(this.fields);
+      axios.post('/staff/report/warn', this.fields).then(function (response) {
+        _this3.success = true;
+        axios.get('/staff/reports/fetch').then(function (response) {
+          _this3.reports = response.data;
+        });
+      })["catch"](function (error) {
+        if (error.response.status === 422 || error.response.status === 500) {
+          if (error.response.status === 422) {
+            console.log(error.response.data);
+            _this3.errors = error.response.data.errors || {};
+          } else {
+            _this3.error = error.response.data;
+          }
+        }
+      });
+    },
+    ban: function ban() {
+      var _this4 = this;
+
+      this.errors = {};
+      console.log(this.fields);
+      axios.post('/staff/report/ban', this.fields).then(function (response) {
+        _this4.success = true;
+        axios.get('/staff/reports/fetch').then(function (response) {
+          _this4.reports = response.data;
+        });
+      })["catch"](function (error) {
+        if (error.response.status === 422 || error.response.status === 500) {
+          if (error.response.status === 422) {
+            console.log(error.response.data);
+            _this4.errors = error.response.data.errors || {};
+          } else {
+            _this4.error = error.response.data;
+          }
+        }
+      });
     }
   }
 });
@@ -43912,7 +44012,10 @@ var render = function() {
                     },
                     on: {
                       click: function($event) {
-                        ;(_vm.modal = true), (_vm.id = message.user.id)
+                        ;(_vm.modal = true),
+                          (_vm.id = message.user.id),
+                          (_vm.fields.message = message.message),
+                          (_vm.fields.user = message.user_id)
                       }
                     }
                   },
@@ -43927,164 +44030,131 @@ var render = function() {
                       "\n                        "
                   )
                 ])
-              ])
-            ]),
-            _vm._v(" "),
-            _c(
-              "div",
-              {
-                staticClass: "modal fade",
-                attrs: {
-                  id: "reportModal",
-                  tabindex: "-1",
-                  role: "dialog",
-                  "aria-labelledby": "reportModalLabel",
-                  "aria-hidden": "true"
-                }
-              },
-              [
-                _c(
-                  "div",
-                  { staticClass: "modal-dialog", attrs: { role: "document" } },
-                  [
-                    _c("div", { staticClass: "modal-content" }, [
-                      _vm._m(0, true),
-                      _vm._v(" "),
-                      _c("div", { staticClass: "modal-body" }, [
-                        _vm.success
-                          ? _c("div", { staticClass: "alert alert-success" }, [
-                              _vm._v(
-                                "\n                                    Your report has been send to the staff team!\n                                "
-                              )
-                            ])
-                          : _vm._e(),
+              ]),
+              _vm._v(" "),
+              _c(
+                "div",
+                {
+                  staticClass: "modal fade",
+                  attrs: {
+                    id: "reportModal",
+                    tabindex: "-1",
+                    role: "dialog",
+                    "aria-labelledby": "reportModalLabel",
+                    "aria-hidden": "true"
+                  }
+                },
+                [
+                  _c(
+                    "div",
+                    {
+                      staticClass: "modal-dialog",
+                      attrs: { role: "document" }
+                    },
+                    [
+                      _c("div", { staticClass: "modal-content" }, [
+                        _vm._m(0, true),
                         _vm._v(" "),
-                        _vm.error
-                          ? _c("div", { staticClass: "alert alert-danger" }, [
-                              _vm._v(
-                                "\n                                    " +
-                                  _vm._s(_vm.error) +
-                                  "\n                                "
+                        _c("div", { staticClass: "modal-body" }, [
+                          _vm.success
+                            ? _c(
+                                "div",
+                                { staticClass: "alert alert-success" },
+                                [
+                                  _vm._v(
+                                    "\n                                        Your report has been send to the staff team!\n                                    "
+                                  )
+                                ]
                               )
-                            ])
-                          : _vm._e(),
-                        _vm._v(" "),
-                        _c(
-                          "form",
-                          {
-                            attrs: { method: "post" },
-                            on: {
-                              submit: function($event) {
-                                $event.preventDefault()
-                                return _vm.submit($event)
+                            : _vm._e(),
+                          _vm._v(" "),
+                          _vm.error
+                            ? _c("div", { staticClass: "alert alert-danger" }, [
+                                _vm._v(
+                                  "\n                                        " +
+                                    _vm._s(_vm.error) +
+                                    "\n                                    "
+                                )
+                              ])
+                            : _vm._e(),
+                          _vm._v(" "),
+                          _c(
+                            "form",
+                            {
+                              attrs: { method: "post" },
+                              on: {
+                                submit: function($event) {
+                                  $event.preventDefault()
+                                  return _vm.submit($event)
+                                }
                               }
-                            }
-                          },
-                          [
-                            _c("div", { staticClass: "form-group" }, [
-                              _c("label", { attrs: { for: "reason" } }, [
-                                _vm._v("Reason:")
+                            },
+                            [
+                              _c("div", { staticClass: "form-group" }, [
+                                _c("label", { attrs: { for: "reason" } }, [
+                                  _vm._v("Reason:")
+                                ]),
+                                _vm._v(" "),
+                                _c("textarea", {
+                                  directives: [
+                                    {
+                                      name: "model",
+                                      rawName: "v-model",
+                                      value: _vm.fields.reason,
+                                      expression: "fields.reason"
+                                    }
+                                  ],
+                                  staticClass: "form-control",
+                                  attrs: {
+                                    id: "reason",
+                                    type: "text",
+                                    placeholder: "Reason for reporting",
+                                    minlength: "20"
+                                  },
+                                  domProps: { value: _vm.fields.reason },
+                                  on: {
+                                    input: function($event) {
+                                      if ($event.target.composing) {
+                                        return
+                                      }
+                                      _vm.$set(
+                                        _vm.fields,
+                                        "reason",
+                                        $event.target.value
+                                      )
+                                    }
+                                  }
+                                })
                               ]),
                               _vm._v(" "),
-                              _c("input", {
-                                directives: [
-                                  {
-                                    name: "model",
-                                    rawName: "v-model",
-                                    value: (_vm.fields.message =
-                                      message.message),
-                                    expression:
-                                      "fields.message = message.message"
-                                  }
-                                ],
-                                attrs: { id: "message", type: "hidden" },
-                                domProps: {
-                                  value: (_vm.fields.message = message.message)
-                                },
-                                on: {
-                                  input: function($event) {
-                                    if ($event.target.composing) {
-                                      return
-                                    }
-                                    _vm.$set(
-                                      (_vm.fields.message = message),
-                                      "message",
-                                      $event.target.value
-                                    )
-                                  }
-                                }
-                              }),
+                              _c("hr"),
                               _vm._v(" "),
-                              _c("input", {
-                                directives: [
-                                  {
-                                    name: "model",
-                                    rawName: "v-model",
-                                    value: (_vm.fields.user = message.user_id),
-                                    expression: "fields.user = message.user_id"
-                                  }
-                                ],
-                                attrs: { id: "user", type: "hidden" },
-                                domProps: {
-                                  value: (_vm.fields.user = message.user_id)
-                                },
-                                on: {
-                                  input: function($event) {
-                                    if ($event.target.composing) {
-                                      return
-                                    }
-                                    _vm.$set(
-                                      (_vm.fields.user = message),
-                                      "user_id",
-                                      $event.target.value
-                                    )
-                                  }
-                                }
-                              }),
-                              _vm._v(" "),
-                              _c("textarea", {
-                                directives: [
-                                  {
-                                    name: "model",
-                                    rawName: "v-model",
-                                    value: _vm.fields.reason,
-                                    expression: "fields.reason"
-                                  }
-                                ],
-                                staticClass: "form-control",
-                                attrs: {
-                                  id: "reason",
-                                  type: "text",
-                                  placeholder: "Reason for reporting",
-                                  minlength: "20"
-                                },
-                                domProps: { value: _vm.fields.reason },
-                                on: {
-                                  input: function($event) {
-                                    if ($event.target.composing) {
-                                      return
-                                    }
-                                    _vm.$set(
-                                      _vm.fields,
-                                      "reason",
-                                      $event.target.value
-                                    )
-                                  }
-                                }
-                              })
-                            ]),
-                            _vm._v(" "),
-                            _c("hr"),
-                            _vm._v(" "),
-                            _vm._m(1, true)
-                          ]
-                        )
+                              _c("div", { staticClass: "row text-center" }, [
+                                _c("div", { staticClass: "col" }, [
+                                  _c(
+                                    "button",
+                                    {
+                                      staticClass: "btn btn-primary",
+                                      attrs: { type: "submit" },
+                                      on: {
+                                        click: function($event) {
+                                          _vm.modal = false
+                                        }
+                                      }
+                                    },
+                                    [_vm._v("Submit")]
+                                  )
+                                ])
+                              ])
+                            ]
+                          )
+                        ])
                       ])
-                    ])
-                  ]
-                )
-              ]
-            )
+                    ]
+                  )
+                ]
+              )
+            ])
           ])
         ])
       ])
@@ -44116,20 +44186,6 @@ var staticRenderFns = [
         },
         [_c("span", { attrs: { "aria-hidden": "true" } }, [_vm._v("×")])]
       )
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "row text-center" }, [
-      _c("div", { staticClass: "col" }, [
-        _c(
-          "button",
-          { staticClass: "btn btn-primary", attrs: { type: "submit" } },
-          [_vm._v("Submit")]
-        )
-      ])
     ])
   }
 ]
@@ -44792,33 +44848,269 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c(
-    "table",
-    { staticClass: "table dataTable my-0", attrs: { id: "dataTable" } },
-    [
-      _vm._m(0),
-      _vm._v(" "),
-      _c(
-        "tbody",
-        _vm._l(_vm.reports, function(report) {
-          return _c("tr", [
-            _c("td", [_vm._v(_vm._s(report.id))]),
-            _vm._v(" "),
-            _c("td", [_vm._v(_vm._s(report.reported))]),
-            _vm._v(" "),
-            _c("td", [_vm._v(_vm._s(report.reporter))]),
-            _vm._v(" "),
-            _c("td", [_vm._v(_vm._s(report.reason))]),
-            _vm._v(" "),
-            _c("td", [_vm._v(_vm._s(report.typeOfReport))]),
-            _vm._v(" "),
-            _vm._m(1, true)
-          ])
-        }),
-        0
-      )
-    ]
-  )
+  return _c("div", { staticClass: "container" }, [
+    _vm.success
+      ? _c("div", { staticClass: "alert alert-success" }, [
+          _vm._v("\n        Report has been processed\n    ")
+        ])
+      : _vm._e(),
+    _vm._v(" "),
+    _vm.error
+      ? _c("div", { staticClass: "alert alert-danger" }, [
+          _vm._v("\n        " + _vm._s(_vm.error) + "\n    ")
+        ])
+      : _vm._e(),
+    _vm._v(" "),
+    _c(
+      "table",
+      { staticClass: "table dataTable my-0", attrs: { id: "dataTable" } },
+      [
+        _vm._m(0),
+        _vm._v(" "),
+        _c(
+          "tbody",
+          _vm._l(_vm.reports, function(report) {
+            return _c(
+              "tr",
+              [
+                _c("td", [_vm._v(_vm._s(report.id))]),
+                _vm._v(" "),
+                _c("td", [_vm._v(_vm._s(report.user.name))]),
+                _vm._v(" "),
+                _c("td", [_vm._v(_vm._s(report.reason))]),
+                _vm._v(" "),
+                (report.typeOfReport = 1)
+                  ? _c("td", [_vm._v("Message")])
+                  : _vm._e(),
+                _vm._v(" "),
+                _c("td", [
+                  _c(
+                    "button",
+                    {
+                      staticClass: "btn btn-danger btn-sm",
+                      attrs: {
+                        type: "submit",
+                        "data-toggle": "modal",
+                        "data-target": "#aysModal"
+                      },
+                      on: {
+                        submit: function($event) {
+                          _vm.fields.id = report.id
+                        },
+                        click: function($event) {
+                          ;(_vm.modal = true),
+                            (_vm.fields.id = report.id),
+                            (_vm.action = 1)
+                        }
+                      }
+                    },
+                    [_c("i", { staticClass: "fa fa-hammer" })]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "button",
+                    {
+                      staticClass: "btn btn-warning btn-sm",
+                      attrs: {
+                        type: "submit",
+                        "data-toggle": "modal",
+                        "data-target": "#aysModal"
+                      },
+                      on: {
+                        submit: function($event) {
+                          _vm.fields.id = report.id
+                        },
+                        click: function($event) {
+                          ;(_vm.modal = true),
+                            (_vm.fields.id = report.id),
+                            (_vm.action = 2)
+                        }
+                      }
+                    },
+                    [_c("i", { staticClass: "fa fa-exclamation-triangle" })]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "button",
+                    {
+                      staticClass: "btn btn-success btn-sm",
+                      attrs: {
+                        type: "submit",
+                        "data-toggle": "modal",
+                        "data-target": "#aysModal"
+                      },
+                      on: {
+                        submit: function($event) {
+                          _vm.fields.id = report.id
+                        },
+                        click: function($event) {
+                          ;(_vm.modal = true),
+                            (_vm.fields.id = report.id),
+                            (_vm.action = 3)
+                        }
+                      }
+                    },
+                    [_c("i", { staticClass: "fa fa-check" })]
+                  )
+                ]),
+                _vm._v(" "),
+                _vm.modal
+                  ? _c("transition", { attrs: { name: "modal" } }, [
+                      _c("div", { staticClass: "modal-mask" }, [
+                        _c("div", { staticClass: "modal-wrapper" }, [
+                          _c(
+                            "div",
+                            {
+                              staticClass: "modal-dialog",
+                              attrs: { role: "document" }
+                            },
+                            [
+                              _c("div", { staticClass: "modal-content" }, [
+                                _c("div", { staticClass: "modal-header" }, [
+                                  _c("h5", { staticClass: "modal-title" }, [
+                                    _vm._v("Are you sure?")
+                                  ]),
+                                  _vm._v(" "),
+                                  _c(
+                                    "button",
+                                    {
+                                      staticClass: "close",
+                                      attrs: {
+                                        type: "button",
+                                        "data-dismiss": "modal",
+                                        "aria-label": "Close"
+                                      }
+                                    },
+                                    [
+                                      _c(
+                                        "span",
+                                        {
+                                          attrs: { "aria-hidden": "true" },
+                                          on: {
+                                            click: function($event) {
+                                              _vm.modal = false
+                                            }
+                                          }
+                                        },
+                                        [_vm._v("×")]
+                                      )
+                                    ]
+                                  )
+                                ]),
+                                _vm._v(" "),
+                                _c("div", { staticClass: "modal-body" }, [
+                                  _vm.action === 3
+                                    ? _c(
+                                        "form",
+                                        {
+                                          on: {
+                                            submit: function($event) {
+                                              $event.preventDefault()
+                                              return _vm.approve($event)
+                                            }
+                                          }
+                                        },
+                                        [
+                                          _c(
+                                            "button",
+                                            {
+                                              staticClass: "btn btn-primary",
+                                              attrs: {
+                                                type: "submit",
+                                                "data-dismiss": "modal"
+                                              },
+                                              on: {
+                                                click: function($event) {
+                                                  _vm.modal = false
+                                                }
+                                              }
+                                            },
+                                            [_vm._v("Are you sure?")]
+                                          )
+                                        ]
+                                      )
+                                    : _vm._e(),
+                                  _vm._v(" "),
+                                  _vm.action === 2
+                                    ? _c(
+                                        "form",
+                                        {
+                                          on: {
+                                            submit: function($event) {
+                                              $event.preventDefault()
+                                              return _vm.warn($event)
+                                            }
+                                          }
+                                        },
+                                        [
+                                          _c(
+                                            "button",
+                                            {
+                                              staticClass: "btn btn-primary",
+                                              attrs: {
+                                                type: "submit",
+                                                "data-dismiss": "modal"
+                                              },
+                                              on: {
+                                                click: function($event) {
+                                                  _vm.modal = false
+                                                }
+                                              }
+                                            },
+                                            [_vm._v("Are you sure?")]
+                                          )
+                                        ]
+                                      )
+                                    : _vm._e(),
+                                  _vm._v(" "),
+                                  _vm.action === 1
+                                    ? _c(
+                                        "form",
+                                        {
+                                          on: {
+                                            submit: function($event) {
+                                              $event.preventDefault()
+                                              return _vm.ban($event)
+                                            }
+                                          }
+                                        },
+                                        [
+                                          _c(
+                                            "button",
+                                            {
+                                              staticClass: "btn btn-primary",
+                                              attrs: {
+                                                type: "submit",
+                                                "data-dismiss": "modal"
+                                              },
+                                              on: {
+                                                click: function($event) {
+                                                  _vm.modal = false
+                                                }
+                                              }
+                                            },
+                                            [_vm._v("Are you sure?")]
+                                          )
+                                        ]
+                                      )
+                                    : _vm._e()
+                                ])
+                              ])
+                            ]
+                          )
+                        ])
+                      ])
+                    ])
+                  : _vm._e()
+              ],
+              1
+            )
+          }),
+          0
+        )
+      ]
+    )
+  ])
 }
 var staticRenderFns = [
   function() {
@@ -44831,31 +45123,11 @@ var staticRenderFns = [
         _vm._v(" "),
         _c("th", [_vm._v("Reported")]),
         _vm._v(" "),
-        _c("th", [_vm._v("Reporter")]),
-        _vm._v(" "),
         _c("th", [_vm._v("Reason")]),
         _vm._v(" "),
         _c("th", [_vm._v("Type")]),
         _vm._v(" "),
         _c("th", [_vm._v("Action")])
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("td", [
-      _c("button", { staticClass: "btn btn-sm btn-danger" }, [
-        _c("i", { staticClass: "fa fa-hammer" })
-      ]),
-      _vm._v(" "),
-      _c("button", { staticClass: "btn btn-warning btn-sm" }, [
-        _c("i", { staticClass: "fa fa-exclamation-triangle" })
-      ]),
-      _vm._v(" "),
-      _c("button", { staticClass: "btn btn-success btn-sm" }, [
-        _c("i", { staticClass: "fa fa-check" })
       ])
     ])
   }

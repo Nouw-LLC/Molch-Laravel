@@ -52,4 +52,7 @@ Route::group(['middleware' => ['role:Admin|Moderator']], function () {
     Route::post('staff/task/delete', 'TaskController@delete');
     Route::get('staff/reports', 'ReportController@index');
     Route::get('staff/reports/fetch', 'ReportController@fetch');
+    Route::post('staff/report/approve', 'ReportController@approve');
+    Route::post('staff/report/warn', 'ReportController@warn');
+    Route::post('staff/report/ban', 'ReportController@ban');
 });

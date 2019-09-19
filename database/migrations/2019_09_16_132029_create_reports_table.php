@@ -17,7 +17,7 @@ class CreateReportsTable extends Migration
             $table->bigIncrements('id');
             $table->string('reason');
             $table->integer('reported');
-            $table->string("message");
+            $table->string("message")->nullable();
             $table->integer('reporter');
             $table->integer('typeOfReport')->nullable();
             $table->boolean('processed')->default(false);

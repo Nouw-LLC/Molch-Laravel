@@ -28,7 +28,6 @@ class UserController extends Controller
     {
         $profileUser = User::findOrFail($id);
 
-
         if ($profileUser->avatar === null) {
             $hr = "border-top: 1px solid rgba(0,0,0,.1)";
         } else {
