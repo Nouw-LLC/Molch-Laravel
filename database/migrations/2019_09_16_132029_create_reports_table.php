@@ -21,7 +21,11 @@ class CreateReportsTable extends Migration
             $table->integer('reporter');
             $table->integer('typeOfReport')->nullable();
             $table->boolean('processed')->default(false);
+            $table->unsignedBigInteger('message_id');
+            $table->string('processing_reason')->nullable();
             $table->timestamps();
+
+            $table->foreign('message_id')->references('id')->on('feeds');
         });
     }
 

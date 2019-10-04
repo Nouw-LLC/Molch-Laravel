@@ -15,6 +15,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/banned', function () {
+    return view('banned');
+})->name('banned');
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
@@ -55,4 +59,9 @@ Route::group(['middleware' => ['role:Admin|Moderator']], function () {
     Route::post('staff/report/approve', 'ReportController@approve');
     Route::post('staff/report/warn', 'ReportController@warn');
     Route::post('staff/report/ban', 'ReportController@ban');
+    Route::get('staff/users', 'UserController@list');
+    Route::get('staff/user/fetch', 'UserController@fetch');
+    Route::post('staff/user/warn', 'UserController@warn');
+    Route::post('staff/user/ban', 'UserController@ban');
+    Route::get('staff/info/{id}', 'UserController@info');
 });

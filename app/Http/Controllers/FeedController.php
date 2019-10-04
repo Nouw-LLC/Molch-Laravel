@@ -81,9 +81,10 @@ class FeedController extends Controller
 
         $report->reason = $request->reason;
         $report->reported = $request->user;
-        $report->message = $request->message;
+        $report->message = $request->reason;
         $report->reporter = $user->id;
         $report->typeOfReport = 1;
+        $report->message_id = $request->message;
 
         $report->save();
 

@@ -10,6 +10,8 @@ namespace App\Http\Controllers;
 
 use App\Report;
 use App\User;
+use App\Warning;
+use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 
@@ -53,6 +55,11 @@ class ReportController extends Controller
         $warnUser->warning += 1;
         $warnUser->save();
 
+        $warning = new Warning();
+        $warning->reason = $request->reason;
+        $warning->user_id = $user;
+        $warning->save();
+
         return response()->json(null,200);
     }
 
@@ -62,12 +69,12 @@ class ReportController extends Controller
         $user = $report->reported;
 
         $report->processed = true;
-
+        $report->processing_reason = $request->input('reason');
         $report->save();
 
         $warnUser = User::find($user);
-
-        $warnUser->banned = true;
+        $warnUser->banned = Carbon::parse($request->input('date'));
+        $warnUser->banned_reason = $request->input('reason');
         $warnUser->save();
 
         return response()->json(null,200);

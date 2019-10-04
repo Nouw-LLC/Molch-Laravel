@@ -24,7 +24,8 @@ class CreateUsersTable extends Migration
             $table->string('bio', 2000)->default("This user has not setup their bio yet!");
             $table->integer('posts_count')->default(0);
             $table->integer('likes_count')->default(0);
-            $table->boolean('banned')->default(0);
+            $table->date('banned')->nullable();
+            $table->string('banned_reason')->nullable();
             $table->integer('warning')->default(0);
             $table->rememberToken();
             $table->timestamps();

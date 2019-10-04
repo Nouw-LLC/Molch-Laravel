@@ -30,6 +30,7 @@
             <hr class="sidebar-divider my-0">
             <ul class="nav navbar-nav text-light" id="accordionSidebar">
                     <li class="nav-item" role="presentation"><a class="nav-link text-center" href="{{ url('staff/reports') }}"><i class="fa fa-flag"></i>Reports</a></li>
+                <li class="nav-item" role="presentation"><a class="nav-link text-center" href="{{ url('staff/users') }}"><i class="fa fa-user"></i>Users</a></li>
             </ul>
             <div class="text-center d-none d-md-inline"><button class="btn rounded-circle border-0" id="sidebarToggle" type="button"></button></div>
         </div>

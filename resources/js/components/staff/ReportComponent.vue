@@ -49,9 +49,22 @@
                                             <button class="btn btn-primary" @click="modal = false" type="submit" data-dismiss="modal">Are you sure?</button>
                                         </form>
                                         <form v-if="action === 2" @submit.prevent="warn">
+                                            <div class="form-group">
+                                                <label for="reason">Reason:</label>
+                                                <textarea id="reason" class="form-control" v-model="fields.reason"></textarea>
+                                            </div>
                                             <button class="btn btn-primary" @click="modal = false" type="submit" data-dismiss="modal">Are you sure?</button>
                                         </form>
                                         <form v-if="action === 1" @submit.prevent="ban">
+                                            <div class="form-group">
+                                                <label for="reason">Reason:</label>
+                                                <textarea id="reason" class="form-control" v-model="fields.reason"></textarea>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="banned">Banned until:</label>
+                                                <v-date-picker id="banned" v-model="fields.date" :attributes='attrs'></v-date-picker>
+                                            </div>
+                                            <hr>
                                             <button class="btn btn-primary" @click="modal = false" type="submit" data-dismiss="modal">Are you sure?</button>
                                         </form>
                                     </div>
@@ -71,13 +84,22 @@
     export default {
         data() {
             return {
-                fields: {},
+                fields: {
+                    date: new Date()
+                },
                 errors: {},
                 success: false,
                 error: "",
                 reports: [],
                 action: 0,
                 modal: false,
+                attrs: [
+                    {
+                        key: 'today',
+                        highlight: true,
+                        dates: new Date(),
+                    },
+                ],
             }
         },
 
@@ -96,7 +118,6 @@
         methods: {
           approve() {
               this.errors = {};
-              console.log(this.fields);
               axios.post('/staff/report/approve', this.fields).then(response => {
                   this.success = true;
                   axios.get('/staff/reports/fetch').then(response => {
@@ -105,7 +126,6 @@
               }).catch(error => {
                   if (error.response.status === 422 || error.response.status === 500) {
                       if (error.response.status === 422) {
-                          console.log(error.response.data);
                           this.errors = error.response.data.errors || {};
                       } else {
                           this.error = error.response.data;
@@ -125,7 +145,6 @@
                 }).catch(error => {
                     if (error.response.status === 422 || error.response.status === 500) {
                         if (error.response.status === 422) {
-                            console.log(error.response.data);
                             this.errors = error.response.data.errors || {};
                         } else {
                             this.error = error.response.data;
@@ -145,7 +164,6 @@
                 }).catch(error => {
                     if (error.response.status === 422 || error.response.status === 500) {
                         if (error.response.status === 422) {
-                            console.log(error.response.data);
                             this.errors = error.response.data.errors || {};
                         } else {
                             this.error = error.response.data;

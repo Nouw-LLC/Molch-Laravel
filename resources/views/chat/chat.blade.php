@@ -19,7 +19,7 @@
             <div class="card-footer">
                 <form id="message-form">
                     <div class="input-group">
-                        <div class="input-group-prepend"></div><input id="message-text" class="form-control" type="text" placeholder="Type your message here!">
+                        <div class="input-group-prepend"></div><input id="message-text" class="form-control" type="text" placeholder="Type your message here!" autocomplete="off">
                         <div class="input-group-append"><input class="btn btn-primary" type="submit"></div>
                     </div>
                 </form>

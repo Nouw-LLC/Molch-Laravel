@@ -6,7 +6,7 @@
             </div>
         <div class="row">
             <div class="col">
-                <textarea class="form-control" rows="3" type="text" name="message" placeholder="Type your message here..." v-model="newMessage" @keyup.enter="sendMessage"/>
+                <textarea class="form-control" rows="3" type="text" name="message" placeholder="Type your message here..." v-model="newMessage" @keyup.enter="sendMessage"></textarea>
             </div>
         </div>
         <hr>

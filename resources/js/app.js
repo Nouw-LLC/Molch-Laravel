@@ -8,8 +8,9 @@ require('./bootstrap');
 
 import bsCustomFileInput from 'bs-custom-file-input';
 import Vue from 'vue'
-import Vuelidate from 'vuelidate'
-Vue.use(Vuelidate);
+import VCalendar from 'v-calendar'
+
+Vue.use(VCalendar);
 
 window.Vue = require('vue');
 
@@ -41,6 +42,7 @@ Vue.component('status-form', require('./components/settings/StatusComponent.vue'
 Vue.component('bio-form', require('./components/settings/BioComponent.vue').default);
 Vue.component('task-list', require('./components/staff/TaskComponent.vue').default);
 Vue.component('reports-table', require('./components/staff/ReportComponent.vue').default);
+Vue.component('user-table', require('./components/staff/UserComponent.vue').default);
 
 const app = new Vue({
 

@@ -13,7 +13,7 @@
                             <a class="feed-user" v-bind:href="'profile/' + message.user.id"><strong>{{message.user.name}}</strong></a><p> {{message.message}} </p>
                         </div>
                         <div class="feed-buttons">
-                            <button class="btn report-button" :id="message.user.id" @click="modal = true, id = message.user.id, fields.message = message.message, fields.user = message.user_id" data-toggle="modal" data-target="#reportModal">
+                            <button class="btn report-button" :id="message.user.id" @click="modal = true, id = message.user.id, fields.message = message.id, fields.user = message.user_id" data-toggle="modal" data-target="#reportModal">
                                 <i class="far fa-flag"></i>
                             </button>
                             <button class="btn like-button">
