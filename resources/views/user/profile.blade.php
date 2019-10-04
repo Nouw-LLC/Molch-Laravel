@@ -25,6 +25,11 @@
                                     <div class="left">Joined:</div>
                                     <div class="right">{{ (new Carbon\Carbon($profileUser->created_at, 'Europe/Amsterdam'))->diffForHumans() }}</div>
                                 </div>
+                                <div class="overflow-auto">
+                                    <div class="left">Warnings:</div>
+
+                                    <div class="right">{{ $profileUser->warning }} / 3</div>
+                                </div>
                             </div>
 
                             <hr style="  {{$hr}};
