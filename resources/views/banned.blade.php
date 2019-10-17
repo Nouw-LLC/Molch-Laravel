@@ -1,24 +1,32 @@
-<div class="container-fluid">
-    <div class="row">
-        <div class="col">
-            <div class="row align-items-center text-center">
-                <div class="col">
-                    <h1>DENIED BY MAID</h1>
-                    <p>You have been denied by our maid</p>
+<head>
+    <link rel="stylesheet" href="{{asset("bootstrap/css/bootstrap.min.css")}}">
+    <title>Oh no! | Banned </title>
+</head>
+<body style="background-color: #353842;">
+    <div style="  height: 100vh;">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-12">
+                    <h1 class="text-center" style="  color: rgb(255,255,255);  font-size: 60px;">
+                        <strong>DENIED BY OUR LOVELY MAID</strong>
+                    </h1>
                 </div>
             </div>
-            <div class="row align-items-center text-center">
+            <div class="row">
                 <div class="col">
+                    <p class="text-center" style="  font-size: 30px;  color: rgb(255,255,255);">
+                        Your IP is in our blocked IP list because of the following reason: <br />
                     @if (session('message'))
-                        <div class="alert alert-danger">
-                            {!! session('message') !!}
-                        </div>
+                        {{ session('message') }}
                     @endif
+                    <br />
+                    If this block is not rightful please contact us at <button class="btn btn-primary" type="button">Reveal email</button><br />
+                    Please include this information or the email will be deleted:<br />
+                    <strong>IP: </strong>{{\Request::getClientIp()}}<br />
+                    <strong>Webclient: </strong>{{\Request::header('user-agent')}}</p>
                 </div>
-
             </div>
         </div>
-
     </div>
+</body>
 
-</div>
