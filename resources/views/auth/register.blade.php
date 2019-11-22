@@ -1,6 +1,7 @@
-{{--@extends('layouts.app')--}}
+@extends('layouts.auth')
 
-{{--@section('content')--}}
+@section('content')
+
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
@@ -51,6 +52,7 @@
                                     </span>
                                 @enderror
                             </div>
+
                         </div>
 
                         <div class="form-group row">
@@ -61,8 +63,22 @@
                             </div>
                         </div>
 
+                        @if(env('GOOGLE_RECAPTCHA_KEY'))
+                            <div class="form-group row">
+                                <div class="col-md-6 mx-auto">
+                                    <div class="g-recaptcha" data-sitekey="{{env('GOOGLE_RECAPTCHA_KEY')}}" aria-required=""></div>
+                                    @error('g-recaptcha-response')
+                                    <div class="invalid-feedback" style="display: block;">
+                                        Please solve the reCAPTCHA to verify that you're not a robot.
+                                    </div>
+                                    @enderror
+                                </div>
+                            </div>
+                        @endif
+
                         <div class="form-group row mb-0">
                             <div class="col-md-6 offset-md-4">
+
                                 <button type="submit" class="btn btn-primary">
                                     {{ __('Register') }}
                                 </button>
@@ -74,4 +90,4 @@
         </div>
     </div>
 </div>
-{{--@endsection--}}
+@endsection

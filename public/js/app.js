@@ -2668,7 +2668,8 @@ __webpack_require__.r(__webpack_exports__);
       error: "",
       users: [],
       action: 0,
-      modal: false
+      modal: false,
+      searchUser: ''
     };
   },
   created: function created() {
