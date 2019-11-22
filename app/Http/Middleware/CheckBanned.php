@@ -21,8 +21,6 @@ class CheckBanned
             auth()->logout();
             $message = nl2br("Your account has been suspended for ".$banned_days." ".str_plural('day', $banned_days)." \n Reason:".$reason);
 
-
-
             return redirect()->route('banned')->withMessage($message);
 
 //            return redirect()->route('banned')->with(compact('message', 'reason'));

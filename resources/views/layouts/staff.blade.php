@@ -100,8 +100,13 @@
                     </ul>
                 </div>
             </nav>
-            <div class="" id="app">
-                @yield('content')
+            <div id="app">
+                @if(!ends_with(Route::currentRouteAction(), 'StaffController@index'))
+                    <div class="container-fluid" style="text-align: right; padding-bottom: 1%">
+                        <a href="{{ url('staff/dashboard') }}"><button class="btn btn-primary"><i class="fa fa-arrow-left"></i> Back to dashboard</button></a>
+                    </div>
+                @endif
+                    @yield('content')
 
             </div>
 

@@ -93,6 +93,7 @@
                 users: [],
                 action: 0,
                 modal: false,
+                searchUser: '',
             }
         },
 

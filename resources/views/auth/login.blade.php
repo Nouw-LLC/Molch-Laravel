@@ -1,38 +1,7 @@
-<!doctype html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+@extends('layouts.auth')
 
-    <title>Laravel</title>
+@section('content')
 
-    <!-- Fonts -->
-    <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
-
-    <!-- Styles -->
-    <link rel="stylesheet" href="{{asset("bootstrap/css/bootstrap.min.css")}}">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i">
-    <script src="https://kit.fontawesome.com/2698fbf7e9.js"></script>
-    <link rel="stylesheet" href="{{asset("css/laravel-bss.css")}}">
-    <link rel="stylesheet" href="{{asset("css/untitled.css")}}">
-    <link rel="stylesheet" href="{{asset("css/untitled.compiled.css")}}">
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-</head>
-<body>
-<div class="flex-center position-ref full-height">
-    @if (Route::has('login'))
-        <div class="top-right links">
-            @auth
-                <a href="{{ url('/home') }}">Home</a>
-            @else
-                <a href="{{ route('login') }}">Login</a>
-
-                @if (Route::has('register'))
-                    <a href="{{ route('register') }}">Register</a>
-                @endif
-            @endauth
-        </div>
-    @endif
 
         <div class="container">
             <div class="row justify-content-center">
@@ -72,7 +41,25 @@
                                         @enderror
                                     </div>
                                 </div>
+                                @if(env('GOOGLE_RECAPTCHA_KEY'))
+                                <div class="form-group row">
 
+                                    <div class="col-md-6 mx-auto">
+                                        <div class="g-recaptcha" data-sitekey="{{env('GOOGLE_RECAPTCHA_KEY')}}"></div>
+
+                                        @error('password')
+                                        <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                        @enderror
+                                    </div>
+                                </div>
+                                @endif
+
+                                    <div class="row">
+                                        <div class="col-md-12 text-right">
+                                        </div>
+                                    </div>
                                 <div class="form-group row">
                                     <div class="col-md-6 offset-md-4">
                                         <div class="form-check">
@@ -105,5 +92,4 @@
             </div>
         </div>
 </div>
-</body>
-</html>
+@endsection
