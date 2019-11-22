@@ -41,20 +41,19 @@
                                         @enderror
                                     </div>
                                 </div>
-                                @if(env('GOOGLE_RECAPTCHA_KEY'))
+
                                 <div class="form-group row">
 
                                     <div class="col-md-6 mx-auto">
-                                        <div class="g-recaptcha" data-sitekey="{{env('GOOGLE_RECAPTCHA_KEY')}}"></div>
+                                        {!! NoCaptcha::display() !!}
 
-                                        @error('password')
-                                        <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
+                                        @error('g-recaptcha-response')
+                                        <div class="invalid-feedback" style="display: block;">
+                                            Please solve the reCAPTCHA to verify that you're not a robot.
+                                        </div>
                                         @enderror
                                     </div>
                                 </div>
-                                @endif
 
                                     <div class="row">
                                         <div class="col-md-12 text-right">

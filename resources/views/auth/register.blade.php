@@ -63,10 +63,9 @@
                             </div>
                         </div>
 
-                        @if(env('GOOGLE_RECAPTCHA_KEY'))
                             <div class="form-group row">
                                 <div class="col-md-6 mx-auto">
-                                    <div class="g-recaptcha" data-sitekey="{{env('GOOGLE_RECAPTCHA_KEY')}}" aria-required=""></div>
+                                    {!! NoCaptcha::display() !!}
                                     @error('g-recaptcha-response')
                                     <div class="invalid-feedback" style="display: block;">
                                         Please solve the reCAPTCHA to verify that you're not a robot.
@@ -74,7 +73,6 @@
                                     @enderror
                                 </div>
                             </div>
-                        @endif
 
                         <div class="form-group row mb-0">
                             <div class="col-md-6 offset-md-4">
