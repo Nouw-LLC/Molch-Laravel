@@ -7,7 +7,7 @@
                 <div class="card-deck d-flex">
                     <div class="card shadow-lg white">
                         <div class="card-body my-auto" style="background-image:url('Synthwave-Neon-80s-Background-4K.jpg');background-size:cover;background-repeat:no-repeat;background-position:center;">
-                            <h4 class="card-title"><img class="rounded-circle mx-auto d-block avatar" src="{{url('storage/avatars/'.$user->avatar_name)}}"/></h4>
+                            <h4 class="card-title"><img class="rounded-circle mx-auto d-block avatar" src="{{url('storage/avatars/'.$profileUser->avatar_name)}}"/></h4>
                             <div class="profile-container">
                                 <h3 class="text-center">{{$profileUser->name}}</h3>
                                 <p>{{ $profileUser->status }}</p>
