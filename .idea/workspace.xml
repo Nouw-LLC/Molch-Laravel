@@ -2,10 +2,15 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f233580d-31d9-43c8-bb9b-161f67d24da9" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.travis.yml" beforeDir="false" afterPath="$PROJECT_DIR$/.travis.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/readme.md" beforeDir="false" afterPath="$PROJECT_DIR$/readme.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/Molch-v1.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Molch-v1.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/.htaccess" beforeDir="false" afterPath="$PROJECT_DIR$/public/.htaccess" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/app.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/app.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/app.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/chat-home.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/chat-home.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/chat.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/chat.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/api.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/api.php" afterDir="false" />
     </list>
-    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -135,10 +140,15 @@
   </component>
   <component name="ProjectId" id="1PssuhQ40qAipGEA1FRK4oIJj3Y" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
   <component name="PropertiesComponent">
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../redant-api" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../Prometech/sts-model" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -167,18 +177,6 @@
       <recent name="$PROJECT_DIR$/public/css" />
     </key>
   </component>
-  <component name="RunDashboard">
-    <option name="ruleStates">
-      <list>
-        <RuleState>
-          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
-        </RuleState>
-        <RuleState>
-          <option name="name" value="StatusDashboardGroupingRule" />
-        </RuleState>
-      </list>
-    </option>
-  </component>
   <component name="RunManager" selected="PHP Remote Debug.Debug">
     <configuration name="profile.blade.php" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/Molch/resources/views/user/profile.blade.php" useBuiltInWebServerPort="true">
       <method v="2" />
@@ -203,6 +201,18 @@
         <item itemvalue="PHP Script.ChatController.php" />
       </list>
     </recent_temporary>
+  </component>
+  <component name="ServiceViewManager">
+    <option name="viewStates">
+      <list>
+        <serviceView>
+          <treeState>
+            <expand />
+            <select />
+          </treeState>
+        </serviceView>
+      </list>
+    </option>
   </component>
   <component name="SvnConfiguration">
     <configuration />
@@ -255,6 +265,12 @@
       <workItem from="1570016370581" duration="614000" />
       <workItem from="1570191846192" duration="325000" />
       <workItem from="1570196525632" duration="9698000" />
+      <workItem from="1574880523117" duration="794000" />
+      <workItem from="1574945354843" duration="970000" />
+      <workItem from="1574951690874" duration="306000" />
+      <workItem from="1574952723022" duration="10000" />
+      <workItem from="1575014696151" duration="752000" />
+      <workItem from="1575281073815" duration="1507000" />
     </task>
     <servers />
   </component>
@@ -273,5 +289,17 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="1453" y="1328" width="424" height="484" key="FileChooserDialogImpl" timestamp="1575016339887">
+      <screen x="710" y="1050" width="1920" height="1080" />
+    </state>
+    <state x="1453" y="1328" width="424" height="484" key="FileChooserDialogImpl/710.1050.1920.1080/1680.0.1680.1050/0.0.1680.1050@710.1050.1920.1080" timestamp="1575016339887" />
+    <state x="2219" y="338" key="com.intellij.ide.util.TipDialog" timestamp="1575014696977">
+      <screen x="1680" y="0" width="1680" height="1050" />
+    </state>
+    <state x="616" y="345" key="com.intellij.ide.util.TipDialog/0.27.1920.988@0.27.1920.988" timestamp="1574952729449" />
+    <state x="1744" y="1428" key="com.intellij.ide.util.TipDialog/1128.1080.1920.1080/1920.0.1920.1080/0.0.1920.1080@1128.1080.1920.1080" timestamp="1574945355411" />
+    <state x="2219" y="338" key="com.intellij.ide.util.TipDialog/710.1050.1920.1080/1680.0.1680.1050/0.0.1680.1050@1680.0.1680.1050" timestamp="1575014696977" />
   </component>
 </project>
