@@ -29,12 +29,12 @@ class HomeController extends Controller
         $user = Auth::user();
 
         $chats = (object)Chatkit::getUserRooms(['id' => (string)$user->id]);
-
         JavaScript::put([
             'name' => $user->name,
             'id' => (string)$user->id
         ]);
 
+//        dd($chats);
 
         return view('feed', compact('chats', 'user'));
     }

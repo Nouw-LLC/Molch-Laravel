@@ -66,7 +66,7 @@ class SettingsController extends Controller
 
             Chatkit::updateUser([
                 'id' => (string)$user->id,
-                'avatar_url' => "https://i-love-my-cat.s-ul.eu/I8mQYCtQ",
+                'avatar_url' => "url('storage/avatars/'.$user->avatar_name)",
             ]);
 
             return back()

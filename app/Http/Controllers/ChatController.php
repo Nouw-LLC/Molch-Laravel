@@ -36,7 +36,7 @@ class ChatController extends Controller
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function store(Request $request, $id)
     {
@@ -97,7 +97,7 @@ class ChatController extends Controller
      * Display the specified resource.
      *
      * @param  \App\Chat  $chat
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function show(Chat $chat, $id)
     {
@@ -123,7 +123,29 @@ class ChatController extends Controller
                 'otherUser' => $otherUser->name
             ]);
 
+            $messages = Chatkit::fetchMultipartMessages([
+                'room_id' => (string)$id,
+                'limit' => 100
+            ]);
+            $position = last($messages['body'])['id'];
+
+            $readCursors = Chatkit::getReadCursorsForRoom([
+                'room_id' => $id_string,
+            ]);
+
+            foreach ($messages['body'] as $message) {
+                    if (!in_array($message['id'], $readCursors)) {
+                        Chatkit::setReadCursor([
+                            'user_id' => (string)$user->id,
+                            'room_id' => $id_string,
+                            'position' => $message['id']
+                        ]);
+                }
+            }
+
+
             $chats = (object)Chatkit::getUserRooms(['id' => (string)$user->id]);
+
             return view('chat.chat', compact('chats', 'user'));
         } else {
             abort(403, "You don't have access to this room!");

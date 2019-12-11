@@ -8,9 +8,20 @@ const chatManager = new Chatkit.ChatManager({
     tokenProvider: tokenProvider
 });
 
+
+
 chatManager
     .connect()
     .then(currentUser => {
+        const cursor = currentUser.readCursor({
+            roomId: room_id
+        })
+        console.log(`read up to message ID ${
+            cursor.position
+        } in ${
+            cursor.room.name
+        }.`)
+
         currentUser.subscribeToRoomMultipart({
             roomId: room_id,
             hooks: {
@@ -18,6 +29,7 @@ chatManager
                     console.log("Received message:", message);
                     const ul = document.getElementById("message-list");
                     const p = document.createElement("p");
+                    p.className = `${message.id}`;
                     p.appendChild(
                         document.createTextNode(`${message.sender.name}: ${
                             message.parts[0].payload.content
@@ -48,8 +60,9 @@ chatManager
                         document.getElementById('presence').style.color = 'green';
                     }
 
-                }
+                },
             }
+
         });
         currentUser.isTypingIn({ roomId: room_id })
             .then(() => {
@@ -59,6 +72,8 @@ chatManager
             .catch(err => {
                 console.log(`Error sending typing indicator: ${err}`)
             });
+
+
         const form = document.getElementById("message-form");
         form.addEventListener("submit", e => {
             e.preventDefault();
@@ -69,6 +84,7 @@ chatManager
             });
             input.value = "";
         })
+        return (p.offsetParent() === null)
     })
 
 

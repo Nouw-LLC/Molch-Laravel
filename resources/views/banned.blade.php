@@ -23,7 +23,9 @@
                     If this block is not rightful please contact us at <button class="btn btn-primary" type="button">Reveal email</button><br />
                     Please include this information or the email will be deleted:<br />
                     <strong>IP: </strong>{{\Request::getClientIp()}}<br />
-                    <strong>Webclient: </strong>{{\Request::header('user-agent')}}</p>
+                    <strong>Webclient: </strong>{{\Request::header('user-agent')}}<br />
+                    <strong>Date:</strong>{{\Carbon::now()}}
+                    </p>
                 </div>
             </div>
         </div>
