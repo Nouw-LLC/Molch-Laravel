@@ -31,7 +31,6 @@
             </a>
             <hr class="sidebar-divider my-0">
             <ul class="nav navbar-nav text-light" id="accordionSidebar">
-{{--                <li class="nav-item" role="presentation"><a class="nav-link text-center" href="#"><i class="fa fa-plus"></i><span class="text-center">Make new chat</span></a></li>--}}
                 @foreach($chats->body as $instance)
                     <li class="nav-item" role="presentation"><a class="nav-link text-center" href="{{url("chat/{$instance['id']}")}}"><i class="fa fa-comment"></i>{{$instance["name"]}} <span class="badge">{{$instance["unread_count"]}}</span></a> </li>
                 @endforeach
